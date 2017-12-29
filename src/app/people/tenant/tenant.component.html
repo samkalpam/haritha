@@ -1,0 +1,204 @@
+<div class="row">
+    <div class="col-md-2">
+        <button type="button" class="btn btn-outline-primary" (click)="showTenantForm()">Add Tenant</button>
+        <button type="button" class="btn btn-outline-primary" (click)="searchForTenant()">Edit Tenant</button>
+    </div>
+    <div class="col-md-10" *ngIf="showSearchTenant">
+        <div class="form-group">
+            <label class="control-label control-label-left col-sm-2" for="searchTenant">Tenant From<span class="req"> *</span></label>
+            <div class="input-group col-sm-3">
+                <input type="text"
+                    id="searchTenant" 
+                    name="searchTenant"
+                    placeholder="Enter Tenant Phone Number"
+                    class="form-control">
+                <span class="input-group-addon"><i class="fa fa-search" (click)="getTenantByPhoneNumber()" aria-hidden="true"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid shadow margin-top">
+    <div class="row">
+        <div id="valErr" class="row viewerror clearfix hidden">
+            <div class="alert alert-danger">Oops! Seems there are some errors..</div>
+        </div>
+        <div id="valOk" class="row viewerror clearfix hidden">
+            <div class="alert alert-success">Yay! ..</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" *ngIf="showFormUI">
+            <tabset>
+              <tab heading="Add \ Edit Tenant" id="tab1" (select)="resetForm('addEditTenantForm')">
+                    <div class="row">
+                      <form [formGroup]="addEditTenantForm" (ngSubmit)="submitForm(addEditTenantForm.value)" class="form-horizontal tenant-form" novalidate>
+                          <div class="row spacer-row"></div>
+                          <div class="container-fluid shadow">
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                          <div class="row">
+                                              <div class="col-md-6">
+                                                  <div class="form-group" [ngClass]="{'has-error':!addEditTenantForm.controls['fname'].valid && addEditTenantForm.controls['fname'].touched}">
+                                                      <label class="control-label control-label-left col-sm-3" for="fname">First Name<span class="req"> *</span></label>
+                                                      <div class="controls col-sm-9">
+                                                          <input class="form-control" type="text" id="fname" name="fname" placeholder="First Name"  value="{{tenantObject.fname}}" [formControl]="addEditTenantForm.controls['fname']" />
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group" [ngClass]="{'has-error':!addEditTenantForm.controls['lname'].valid && addEditTenantForm.controls['lname'].touched}">
+                                                      <label class="control-label control-label-left col-sm-3" for="lname">Last Name<span class="req"> *</span></label>
+                                                      <div class="controls col-sm-9">
+                                                          <input class="form-control" type="text" id="lname" name="lname" placeholder="Last Name" [formControl]="addEditTenantForm.controls['lname']" />
+                                                      </div>
+                                                  </div>
+                                                  <div class="row">
+                                                      <div class="col-md-6 phone-group">
+                                                          <div class="form-group" [ngClass]="{'has-error':!addEditTenantForm.controls['phoneprefix'].valid && addEditTenantForm.controls['phoneprefix'].touched}">
+                                                              <label class="control-label control-label-left col-sm-6" for="phoneprefix">Phone Prefix<span class="req"> *</span></label>
+                                                              <div class="controls col-sm-6">
+                                                                  <input class="form-control" type="text" id="phoneprefix" name="phoneprefix" placeholder="Enter Country Code" [formControl]="addEditTenantForm.controls['phoneprefix']" />
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-md-6 phone-group">
+                                                          <div class="form-group" [ngClass]="{'has-error':!addEditTenantForm.controls['phone'].valid && addEditTenantForm.controls['phone'].touched}">
+                                                              <label class="control-label control-label-left col-sm-3" for="phone">Phone<span class="req"> *</span></label>
+                                                              <div class="controls col-sm-9">
+                                                                  <input class="form-control" type="text" id="phone" name="phone" placeholder="Enter Mobile Number" [formControl]="addEditTenantForm.controls['phone']" />
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group" [ngClass]="{'has-error':!addEditTenantForm.controls['email'].valid && addEditTenantForm.controls['email'].touched}">
+                                                      <label class="control-label control-label-left col-sm-3" for="email">Email<span class="req"> *</span></label>
+                                                      <div class="controls col-sm-9">
+                                                          <input class="form-control" type="text" id="email" name="email" placeholder="Enter Email Address" [formControl]="addEditTenantForm.controls['email']" />
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group" [ngClass]="{'has-error':!addEditTenantForm.controls['identification'].valid && addEditTenantForm.controls['identification'].touched}">
+                                                      <label class="control-label control-label-left col-sm-3" for="identification">Identification<span class="req"> *</span></label>
+                                                      <div class="controls col-sm-9">
+                                                          <input class="form-control" type="text" id="identification" name="identification" placeholder="Enter Valid ID" [formControl]="addEditTenantForm.controls['identification']" />
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-1"></div>
+                                              <div class="col-md-5">
+                                                  <div class="row">
+                                                      <div class="col-md-6 phone-group">
+                                                          <div class="form-group" [ngClass]="{'has-error':!addEditTenantForm.controls['tenantFrom'].valid && addEditTenantForm.controls['tenantFrom'].touched}">
+                                                              <label class="control-label control-label-left col-sm-6" for="tenantFrom">Tenant From<span class="req"> *</span></label>
+                                                              <div class="input-group col-sm-6">
+                                                                  <input type="text"
+                                                                      id="tenantFrom"
+                                                                      name="tenantFrom" 
+                                                                      class="form-control"
+                                                                      [formControl]="addEditTenantForm.controls['tenantFrom']"
+                                                                      [bsConfig]="bsConfig"
+                                                                      #tenantFrom="bsDatepicker"
+                                                                      bsDatepicker [(bsValue)]="tenantFromValue" disabled>
+                                                                      
+                                                                  <span class="input-group-addon datepicker-button-bg"><i class="fa fa-calendar" (click)="tenantFrom.toggle()" aria-hidden="true"></i></span>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-md-6 phone-group">
+                                                          <div class="form-group" [ngClass]="{'has-error':!addEditTenantForm.controls['tenantTo'].valid && addEditTenantForm.controls['tenantTo'].touched}">
+                                                              <label class="control-label control-label-left col-sm-6" for="tenantTo">Tenant To<span class="req"> *</span></label>
+                                                              <div class="input-group col-sm-6">
+                                                                  <input type="text"
+                                                                      id="tenantTo" 
+                                                                      name="tenantTo"
+                                                                      class="form-control"
+                                                                      [formControl]="addEditTenantForm.controls['TenantTo']"
+                                                                      [minDate]="tenantFromValue"
+                                                                      [bsConfig]="bsConfig"
+                                                                      #tenantTo="bsDatepicker"
+                                                                      bsDatepicker [(bsValue)]="tenantToValue" disabled>
+                                                                  <span class="input-group-addon datepicker-button-bg"><i class="fa fa-calendar" (click)="tenantTo.toggle()" aria-hidden="true"></i></span>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div>
+                                                  <!-- <div class="row">
+                                                      <div class="col-md-6 phone-group">
+                                                          <div class="form-group" [ngClass]="{'has-error':!addEditOwnerForm.controls['tenantFrom'].valid && addEditOwnerForm.controls['tenantFrom'].touched}">
+                                                              <label class="control-label control-label-left col-sm-6" for="tenantFrom">Tenant From<span class="req"> *</span></label>
+                                                              <div class="input-group col-sm-6">
+                                                                  <input type="text"
+                                                                      id="tenantFrom" 
+                                                                      name="tenantFrom"
+                                                                      class="form-control"
+                                                                      [formControl]="addEditOwnerForm.controls['tenantFrom']"
+                                                                      [bsConfig]="bsConfig"
+                                                                      #tenantFrom="bsDatepicker"
+                                                                      bsDatepicker [(bsValue)]="tenantFromValue" disabled>
+                                                                  <span class="input-group-addon"><i class="fa fa-calendar" (click)="tenantFrom.toggle()" aria-hidden="true"></i></span>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="col-md-6 phone-group">
+                                                          <div class="form-group" [ngClass]="{'has-error':!addEditOwnerForm.controls['tenantTo'].valid && addEditOwnerForm.controls['tenantTo'].touched}">
+                                                              <label class="control-label control-label-left col-sm-6" for="tenantTo">Tenant From<span class="req"> *</span></label>
+                                                              <div class="input-group col-sm-6">
+                                                                  <input type="text"
+                                                                      id="tenantTo" 
+                                                                      name="tenantTo"
+                                                                      class="form-control"
+                                                                      [formControl]="addEditOwnerForm.controls['tenantTo']"
+                                                                      [minDate]="tenantFromValue"
+                                                                      [bsConfig]="bsConfig"
+                                                                      #tenantTo="bsDatepicker"
+                                                                      bsDatepicker [(bsValue)]="tenantToValue" disabled >
+
+                                                                  <span class="input-group-addon"><i class="fa fa-calendar" (click)="tenantTo.toggle()" aria-hidden="true"></i></span>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                  </div> -->
+                                                  <div class="form-group">
+                                                      <label class="control-label control-label-left col-sm-3">Tenant Disabled</label>
+                                                      <!-- <div class="controls col-sm-9">
+                                                          <label class="checkbox" for="tenantDisabled">
+                                                              <input type="checkbox" value="" id="tenantDisabled" name="tenantDisabled"/>
+                                                          </label>
+                                                      </div> -->
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                    <button type="submit" [disabled]="!addEditTenantForm.valid" class="btn btn-primary">Submit</button>
+                                  </div>
+                          </div>
+                      </form>
+                  </div>
+              </tab>
+              <tab heading="End Tenant" (select)="resetForm()">
+                  <ul>
+                      <li>No dues clearance</li>
+                      <li>Create new Owner before disabling current owner</li>
+                      <li>Assign to flat</li>
+                  </ul>
+              </tab>
+              <!-- <tab heading="Static Title 2">Static content 2</tab>
+              <tab (select)="alertMe()">
+                <ng-template tabHeading>
+                  <span class="badge badge-secondary">Click here!</span>
+                </ng-template>
+                I've got an HTML heading, and a select callback. Pretty cool!
+              </tab> -->
+            </tabset>
+          </div>
+        </div>
+    </div>
+</div>
+<!-- TODO: <div *ngIf="loginForm.controls['email'].hasError('required') && loginForm.controls['email'].touched" class="alert alert-danger">You must add an email.</div> -->
+<!-- TODO: Put in later
+<div class="row">
+    <div id="valErr" class="row viewerror clearfix">
+        <div class="alert alert-danger">Oops! Seems there are some errors..</div>
+    </div>
+    <div id="valOk" class="row viewerror clearfix">
+        <div class="alert alert-success">Yay! ..</div>
+    </div>
+</div> -->
