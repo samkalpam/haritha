@@ -16,7 +16,7 @@
   </div>
 </form> -->
 
-<form id="formentry" class="form-horizontal" role="form">
+<form id="formentry" class="form-horizontal">
   <div class="container-fluid shadow">
       <div class="row">
           <div id="valErr" class="row viewerror clearfix hidden">
@@ -32,16 +32,15 @@
                           <div class="form-group">
                               <label class="control-label control-label-left col-sm-3" for="userName">User Name<span class="req"> *</span></label>
                               <div class="controls col-sm-9">
-                                  <input id="userName" type="text" class="form-control" data-role="text" placeholder="" name="" required="required"></div>
+                                  <input id="userName" type="text" class="form-control" data-role="text" placeholder="" name=""></div>
                           </div>
                           <div class="form-group">
                               <label class="control-label control-label-left col-sm-3" for="password">Password<span class="req"> *</span></label>
                               <div class="controls col-sm-9">
-                                  <input id="password" type="text" class="form-control" data-role="text" required="required"></div>
+                                  <input id="password" type="text" class="form-control" data-role="text"></div>
                           </div>
                           <div class="form-group">
-                              <button id="button10" type="button" class="btn btn-default">Button</button></div>
-                              <button type="button" class="btn btn-link">Link</button>
+                              <button id="button10" type="button" (click)="login()" class="btn btn-default">Login</button></div>
                       </div>
                   </div>
               </div>

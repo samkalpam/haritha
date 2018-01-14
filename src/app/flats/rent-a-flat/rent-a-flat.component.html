@@ -1,3 +1,150 @@
-<p>
-  rent-a-flat works!
-</p>
+<div class="row actions-row">
+    <div class="col-md-4" >
+        <div class="form-group">
+            <label class="action-row-label control-label control-label-left col-sm-4" for="searchOwner">Select Block</label>
+            <div class="input-group col-sm-5">
+                <div class="btn-group" dropdown>
+                    <button dropdownToggle type="button" class="btn btn-default dropdown-toggle">
+                      Select Block &nbsp;<span class="caret"></span>
+                    </button>
+                    <ul *dropdownMenu class="dropdown-menu" role="menu">
+                      <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
+                      <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
+                      <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+                      <li class="divider dropdown-divider"></li>
+                      <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+                      </li>
+                    </ul>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4" >
+        <div class="form-group">
+            <label class="action-row-label control-label control-label-left col-sm-4" for="searchOwner">Select Flat</label>
+            <div class="input-group col-sm-5">
+                <div class="btn-group" dropdown>
+                    <button dropdownToggle type="button" class="btn btn-default dropdown-toggle">
+                      Select Flat # &nbsp;<span class="caret"></span>
+                    </button>
+                    <ul *dropdownMenu class="dropdown-menu" role="menu">
+                      <li role="menuitem"><a class="dropdown-item">Action</a></li>
+                      <li role="menuitem"><a class="dropdown-item">Another action</a></li>
+                      <li role="menuitem"><a class="dropdown-item">Something else here</a></li>
+                      <li role="menuitem"><a class="dropdown-item">Separated link</a></li>
+                    </ul>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+          <label class="action-row-label control-label control-label-left col-sm-4" for="searchTenant">Search Tenant</label>
+          <div class="input-group col-sm-6">
+              <input type="text"
+                  id="searchTenant" 
+                  name="searchTenant"
+                  placeholder="Enter Tenant Phone Number"
+                  class="form-control">
+              <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
+          </div>
+      </div>
+    </div>
+</div>
+<div class="container-fluid shadow margin-top">
+        <div class="row">
+            <div class="col-md-12">
+                    <div class="row">
+                      <form class="form-horizontal owner-form" novalidate>
+                          <div class="row spacer-row"></div>
+                          <div class="container-fluid shadow">
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                          <div class="row">
+                                              <div class="col-md-6">
+                                                  <div class="form-group" >
+                                                      <label class="control-label control-label-left col-sm-3">Owner Name</label>
+                                                      <div class="controls col-sm-9">
+                                                          <label class="control-label content-label control-label-left">Firstname Lastname</label>
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label control-label-left col-sm-3" for="lname">Owner Since</label>
+                                                      <div class="controls col-sm-9">
+                                                          <label class="control-label content-label control-label-left">12/12/2017</label>
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label control-label-left col-sm-3">Phone</label>
+                                                      <div class="controls col-sm-9">
+                                                          <label class="control-label content-label control-label-left">+91-1234567890</label>
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label control-label-left col-sm-3">Email</label>
+                                                      <div class="controls col-sm-9">
+                                                          <label class="control-label content-label control-label-left">email@email.com</label>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-1"></div>
+                                              <div class="col-md-5">
+                                                  <div class="form-group" >
+                                                      <label class="control-label control-label-left col-sm-3">Tenant Name</label>
+                                                      <div class="controls col-sm-9">
+                                                          <label class="control-label content-label control-label-left">Firstname Lastname</label>
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label control-label-left col-sm-3" for="lname">Tenant Since</label>
+                                                      <div class="controls col-sm-9">
+                                                          <label class="control-label content-label control-label-left">12/12/2017</label>
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label control-label-left col-sm-3">Phone</label>
+                                                      <div class="controls col-sm-9">
+                                                          <label class="control-label content-label control-label-left">+91-1234567890</label>
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label control-label-left col-sm-3">Email</label>
+                                                      <div class="controls col-sm-9">
+                                                          <label class="control-label content-label control-label-left">email@email.com</label>
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label control-label-left col-sm-3">ICE 1</label>
+                                                      <div class="controls col-sm-9">
+                                                          <label class="control-label content-label control-label-left">Firstname Lastname | +91-1234567890</label>
+                                                      </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <label class="control-label control-label-left col-sm-3">ICE 2</label>
+                                                      <div class="controls col-sm-9">
+                                                          <label class="control-label content-label control-label-left">Firstname Lastname | +91-1234567890</label>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                  </div>
+                          </div>
+                      </form>
+                  </div>
+          </div>
+        </div>
+</div>
+<!-- TODO: <div *ngIf="loginForm.controls['email'].hasError('required') && loginForm.controls['email'].touched" class="alert alert-danger">You must add an email.</div> -->
+<!-- TODO: Put in later
+<div class="row">
+    <div id="valErr" class="row viewerror clearfix">
+        <div class="alert alert-danger">Oops! Seems there are some errors..</div>
+    </div>
+    <div id="valOk" class="row viewerror clearfix">
+        <div class="alert alert-success">Yay! ..</div>
+    </div>
+</div> -->
