@@ -90,12 +90,13 @@
                                                                   <input type="text"
                                                                       id="tenantFrom"
                                                                       name="tenantFrom" 
-                                                                      class="form-control"
-                                                                      [formControl]="addEditTenantForm.controls['tenantFrom']"
+                                                                      class="form-control hideElement"
                                                                       [bsConfig]="bsConfig"
+                                                                      hidden="true"
                                                                       #tenantFrom="bsDatepicker"
                                                                       bsDatepicker [(bsValue)]="tenantFromValue" disabled>
-                                                                      
+                                                                    <input type="text" class="form-control dateString" [(ngModel)]="tenantToValue" 
+                                                                      [formControl]="addEditTenantForm.controls['tenantFrom']" />
                                                                   <span class="input-group-addon datepicker-button-bg"><i class="fa fa-calendar" (click)="tenantFrom.toggle()" aria-hidden="true"></i></span>
                                                               </div>
                                                           </div>
@@ -107,12 +108,14 @@
                                                                   <input type="text"
                                                                       id="tenantTo" 
                                                                       name="tenantTo"
-                                                                      class="form-control"
-                                                                      [formControl]="addEditTenantForm.controls['TenantTo']"
+                                                                      class="form-control hideElement"
+                                                                      hidden
                                                                       [minDate]="tenantFromValue"
                                                                       [bsConfig]="bsConfig"
                                                                       #tenantTo="bsDatepicker"
                                                                       bsDatepicker [(bsValue)]="tenantToValue" disabled>
+                                                                   <input type="text" class="form-control dateString" [(ngModel)]="tenantToValue" 
+                                                                    [formControl]="addEditTenantForm.controls['tenantTo']" />
                                                                   <span class="input-group-addon datepicker-button-bg"><i class="fa fa-calendar" (click)="tenantTo.toggle()" aria-hidden="true"></i></span>
                                                               </div>
                                                           </div>
